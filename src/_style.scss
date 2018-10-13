@@ -1,0 +1,265 @@
+$note-width: 30%;
+$line-height: 20px;
+
+body {
+    color: $c-txt;
+    background-color: $c-bg;
+    height: calc(100vh - 30px);
+    padding: 15px;
+    margin: 0;
+    overflow: hidden;
+}
+
+#app {
+    height: 100%;
+
+    *:focus {
+        outline: none;
+    }
+
+    &.key-control *:focus {
+        outline: 3px solid $c-tert;
+        outline-offset: -2px;
+    }
+}
+
+
+@keyframes loadAni {
+    from { transform: rotate(  0deg); }
+    to   { transform: rotate(360deg); }
+}
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100%;
+    height: 100vh;
+    background-color: $c-bg;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    
+    img {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: calc(50vw - 100px);
+        top: calc(50vh - 100px);
+        transform-origin: 99px 110px;
+        animation: loadAni linear 2s infinite;
+    }
+
+    &.open {
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+aside {
+    @include scroll-bar-light;
+    position: relative;
+    width: $note-width;
+    max-height: calc(100% - 42px);
+    overflow: auto;
+    padding-right: 5px;
+}
+
+button.btn {
+    @include font-stack-button;
+    padding: 8px 30px;
+    border: 2px solid $c-border;
+    background: transparent;
+    transition: border-color 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        border-color: $c-prim;
+    }
+
+    &.sec {
+        color: $c-sec;
+
+        &:hover {
+            border-color: $c-sec;
+        }
+    }
+
+    &.new-note {
+        width: $note-width;
+    }
+}
+
+.note-container {
+    height: 80px;
+    transition: all 0.3s;
+    padding-top: 15px;
+
+    .note {
+        position: relative;
+        height: 80px;
+        border-radius: 4px;
+        transition: all 0.3s;
+        background-color: white;
+        overflow: hidden;
+        opacity: 0.8;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        .title, .content {
+            display: block;
+            width: calc(100% - 60px);
+            border: none;
+            pointer-events: none;
+            resize: none;
+        }
+
+        .title {
+            @include font-stack-title-small;
+            width: calc(100% - 80px);
+            margin: 15px 30px 0;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .date {
+            @include font-stack-subtext;
+            margin: 0px 30px 10px;
+        }
+
+        .content {
+            @include font-stack-prim;
+            @include scroll-bar-dark;
+            height: calc(100% - 115px);
+            line-height: $line-height;
+            margin: 0 30px;
+            background: linear-gradient(white #{$line-height - 1}, $c-border-light 1px);
+            background-size: 100% $line-height;
+            background-attachment: local;
+            overflow: auto;
+        }
+
+        .icon {
+            position: absolute;
+            right: 6px;
+            top: 20px;
+            border: none;
+            background: none;
+            color: rgba($c-txt-light, 0.7);
+            font-size: 34px;
+            font-weight: 700;
+            cursor: pointer;
+            
+            &:hover {
+                color: red;
+            }
+        }
+    }
+
+    &.opening .note {
+        position: fixed;
+        width: $note-width;
+        left: 15px;
+    }
+
+    &.open {
+        height: 0;
+        padding-top: 0;
+
+        .note {
+            position: fixed;
+            top: 15px;
+            left: calc(#{$note-width} + 30px);
+            width: calc(#{100% - $note-width} - 45px);
+            height: calc(100% - 30px);
+            opacity: 1;
+            cursor: default;
+
+            .title, .content {
+                pointer-events: all;
+            }
+
+            .title {
+                @include font-stack-title;
+                margin: 15px 50px 5px 30px;
+            }
+
+            .icon {
+                right: 15px;
+                top: 15px;
+                font-weight: 500;
+                
+                &:hover {
+                    color: $c-txt-light;
+                }
+            }
+        }
+    }
+}
+
+.dialog-bg,
+.dialog {
+    position: fixed;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    &.open {
+        pointer-events: all;
+        opacity: 1;
+    }
+}
+
+.dialog-bg {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dialog {
+    @include font-stack-prim;
+    left: calc(50vw - 200px);
+    top: calc(50vh - 75px);
+    width: 400px;
+    height: 150px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+
+    p {
+        text-align: center;
+        padding: 15px 15px 5px;
+    }
+
+    button {
+        width: 40%;
+        margin: 5%;
+    }
+
+    &.open {
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+@media (max-width: 800px) {
+    button.btn.new-note {
+        width: 100%;
+    }
+
+    aside {
+        width: 100%;
+    }
+
+    .note-container.open .note {
+        left: 15px;
+        z-index: 5;
+        width: calc(100% - 30px);
+    }
+}

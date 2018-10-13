@@ -1,21 +1,27 @@
-# astro-notes
+#  AstroNotes
 
-## Project setup
+## Features
+
+CRUD note taking application, written in Vue.JS.
+
+    - Responsive design, including mobile view
+    - Keyboard control support, with appropriate highlighting
+    - Updating last edited time stamp
+    - Emulation of AstroSat website design
+    - Animated loading screen
+    - Custom scrollbar to handle overflow
+
+
+## Live Demo
+A live demo is availe to view at https://niallains.github.io/astronotes
+
+## Run locally
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
 
-### Compiles and minifies for production
+## To deploy
 ```
 npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
 ```

@@ -1,0 +1,89 @@
+//
+// Colors
+//
+$c-prim: #7977b7;
+$c-sec: #e16d1d;
+$c-tert: #d8c90e;
+$c-delete: #f00;
+
+$c-txt: #222;
+$c-txt-light: #888;
+
+$c-bg: #2d2d2d;
+$c-border: #777;
+$c-border-light: #ccc;
+
+
+//
+// Typography
+//
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+$f-prim: "Open Sans", sans-serif;
+
+@mixin font-stack-prim {
+    font-family: $f-prim;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+@mixin font-stack-title {
+    font-family: $f-prim;
+    font-weight: 300;
+    font-size: 26px;
+}
+
+@mixin font-stack-title-small {
+    @include font-stack-title;
+    font-size: 18px;
+}
+
+@mixin font-stack-subtext {
+    color: $c-txt-light;
+    font-family: $f-prim;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+@mixin font-stack-button {
+    color: $c-prim;
+    font-family: $f-prim;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+//
+// Scrollbar
+//
+@mixin scroll-bar-light {
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        opacity: 0;
+        margin-top: 15px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 1);
+    }
+}
+
+@mixin scroll-bar-dark {
+    @include scroll-bar-light;
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba($c-bg, 0.8);
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba($c-bg, 1);
+    }
+}
+
+

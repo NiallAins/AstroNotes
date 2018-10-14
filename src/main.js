@@ -4,7 +4,7 @@ import router from './router';
 import store from './store';
 
 Vue.config.productionTip = false;
-Vue.http.options.root = 'https://niallains.github.io/AstroNotes/'
+Vue.http.options.root = 'https://niallains.github.io/AstroNotes/dist/'
 
 new Vue({
   router,

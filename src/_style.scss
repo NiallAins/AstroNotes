@@ -247,19 +247,3 @@ button.btn {
         pointer-events: all;
     }
 }
-
-@media (max-width: 800px) {
-    button.btn.new-note {
-        width: 100%;
-    }
-
-    aside {
-        width: 100%;
-    }
-
-    .note-container.open .note {
-        left: 15px;
-        z-index: 5;
-        width: calc(100% - 30px);
-    }
-}

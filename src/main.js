@@ -10,5 +10,3 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app');
-
-Vue.http.options.root = 'https://niallains.github.io/AstroNotes/dist/'

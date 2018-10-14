@@ -9,8 +9,8 @@ CRUD note taking application, written in Vue.JS.
 - Emulation of AstroSat website design
 - Animated loading screen
 - Custom scrollbar to handle overflow
-- Functionaly and visually tested for Chrome, Firefox, Edge and on Android
-- Functionaly tested for IE11
+- Functionaly and visually tested for Chrome, Firefox and on Android
+- Functionaly tested for Edge and IE11
 
 ## Live Demo
 A live demo is available to view at https://niallains.github.io/AstroNotes/dist

@@ -9,7 +9,7 @@
 			class	="loader"
 			:class	="{ open : loading }"
 		>
-			<img src="../public/logo.jpg">
+			<img src="https://niallains.github.io/AstroNotes/dist/logo.jpg">
 		</div>
 
 		<button

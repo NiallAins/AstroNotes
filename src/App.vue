@@ -9,7 +9,7 @@
 			class	="loader"
 			:class	="{ open : loading }"
 		>
-			<img src="https://niallains.github.io/AstroNotes/dist/logo.jpg">
+			<img src="../public/logo.jpg">
 		</div>
 
 		<button
@@ -113,8 +113,8 @@
 		},
 		created : function() {
 			// If URL contains note title, open it
-			if (this.$route.params.note) {
-				let urlNote = this.$route.params.note.toLowerCase();
+			if (this.$route.query.n) {
+				let urlNote = this.$route.query.n.toLowerCase();
 				this.currentNote = this.notes.findIndex(n =>
 					this.toURLString(n.title) === urlNote
 				);
@@ -132,7 +132,7 @@
 			 *	@return :string - URL safe string
 			 */
 			toURLString: function(string) {
-				return string.replace(/ /g, '_').toLowerCase();
+				return string.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
 			},
 
 			/**
@@ -166,7 +166,8 @@
 				}
 
 				this.$router.push({
-					path: '/' + this.toURLString(this.notes[note].title)
+					path: '/',
+					query: { n: this.toURLString(this.notes[note].title) }
 				});
 			},
 

@@ -5,7 +5,7 @@ import App from './App.vue';
 Vue.use(Router);
 
 export default new Router({
-  base: 'https://niallains.github.io/AstroNotes/dist/',
+  base: '/AstroNotes/dist/',
   mode: 'history',
   routes: [
     {

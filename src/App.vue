@@ -37,7 +37,7 @@
 				>
 					<button
 						class		="icon"
-						@click.stop	="currentNote === i ? toggleNote(i) : deletingNote = i"
+						@click.stop	="currentNote === i ? toggleNote(i) : openModal(i)"
 					>
 						×
 					</button>
@@ -155,6 +155,7 @@
 						this.newEdit = false;
 					}
 					this.animateNote(this.currentNote);
+					// Then open note new if there is one
 					setTimeout(() => {
 						if (note === this.currentNote) {
 							this.currentNote = -1;
@@ -188,7 +189,7 @@
 
 			/**
 			 * Add human readable date properties to a note
-			 * @param note: string - index of note with no human readable dates
+			 * @param note: string - index of note to add dates to
 			 */
 			addDates: function(note) {
 				let noteObj = this.notes[note];
@@ -218,7 +219,7 @@
 			},
 
 			/**
-			 * Deletes the selected note
+			 * Delete the selected note
 			 */
 			deleteNote: function() {
 				this.$store.commit('deleteNote', this.deletingNote);
@@ -231,4 +232,5 @@
 <style lang="scss">
 	@import './_variables';
 	@import './_style';
+	@import './_mobile';
 </style>

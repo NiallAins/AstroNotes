@@ -223,6 +223,9 @@
 			 */
 			deleteNote: function() {
 				this.$store.commit('deleteNote', this.deletingNote);
+				if (this.currentNote > this.deletingNote) {
+					this.currentNote -= 1;
+				}
 				this.deletingNote = -1;
 			}
 		}
